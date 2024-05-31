@@ -1,0 +1,40 @@
+float v2;
+int readVal;
+int analogPin = A2;
+int dt = 100;
+int ledROJO = 10;
+int ledAZUL = 9;
+
+
+void setup() {
+  // put your setup code here, to run once:
+   Serial.begin(9600);
+   pinMode(analogPin, INPUT);
+   pinMode(ledROJO, OUTPUT);
+    pinMode(ledAZUL, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  readVal = analogRead(analogPin);
+  v2 = (5 * readVal)/1023.;
+  if(v2 > 4){
+      digitalWrite(ledROJO, HIGH);
+       digitalWrite(ledAZUL, LOW);
+  }
+  if(v2 <= 4){
+      digitalWrite(ledROJO, LOW);
+      digitalWrite(ledAZUL, HIGH);
+  }
+
+  Serial.print("EL VOLTAGE ES: "); 
+  Serial.println(v2); 
+  delay(dt);
+
+
+}
+
+
+
+
+ 
